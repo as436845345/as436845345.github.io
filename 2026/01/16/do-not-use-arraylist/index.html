@@ -15,7 +15,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://as436845345.github.io/images/arraylist/arraylist_add_valuetype_il_code.png">
 <meta property="article:published_time" content="2026-01-16T06:02:31.000Z">
-<meta property="article:modified_time" content="2026-01-16T07:50:43.821Z">
+<meta property="article:modified_time" content="2026-01-16T07:52:19.376Z">
 <meta property="article:author" content="Ljhhhh">
 <meta property="article:tag" content="C#">
 <meta property="article:tag" content="Array">
@@ -192,7 +192,7 @@
 </ul>
 <p>上述 C# 代码编译为 IL 后，我们可以清晰看到装箱的过程：</p>
 <p><img src="/../images/arraylist/arraylist_add_valuetype_il_code.png" alt="ArrayList 测试代码编译为 IL"></p>
-<h2 id="装箱的性能影响"><a href="#装箱的性能影响" class="headerlink" title="装箱的性能影响"></a>装箱的性能影响</h2><p><strong>装箱</strong>是指将值类型转换为引用类型（object）的过程。<br>在上面的例子中，添加值类型 1（int）时，IL 会先执行 box [System.Runtime]System.Int32 指令，再调用 Add(object) 方法。<br>这个 box 指令本身会占用 5 个字节的 IL 代码空间（1 字节操作码 + 4 字节元数据令牌），而如果添加的是引用类型，则不会有这个额外开销。<br>频繁的装箱 &#x2F; 拆箱会增加内存分配和类型转换的开销，从而影响程序性能。因此在实际开发中，应尽量避免不必要的装箱操作，推荐使用泛型集合（如 List<T>），通过指定具体的存储类型，从根本上避免装箱 &#x2F; 拆箱。</p>
+<h2 id="装箱的性能影响"><a href="#装箱的性能影响" class="headerlink" title="装箱的性能影响"></a>装箱的性能影响</h2><p><strong>装箱</strong>是指将值类型转换为引用类型（object）的过程。<br>在上面的例子中，添加值类型 1（int）时，IL 会先执行 <code>box [System.Runtime]System.Int32</code> 指令，再调用 Add(object) 方法。<br>这个 box 指令本身会占用 5 个字节的 IL 代码空间（1 字节操作码 + 4 字节元数据令牌），而如果添加的是引用类型，则不会有这个额外开销。<br>频繁的装箱 &#x2F; 拆箱会增加内存分配和类型转换的开销，从而影响程序性能。因此在实际开发中，应尽量避免不必要的装箱操作，推荐使用泛型集合（如 <code>List&lt;T&gt;</code>），通过指定具体的存储类型，从根本上避免装箱 &#x2F; 拆箱。</p>
 <h2 id="外部链接"><a href="#外部链接" class="headerlink" title="外部链接"></a>外部链接</h2><ul>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/fundamentals/types/">C# 类型系统 - Microsoft Learn</a></li>
 <li><a target="_blank" rel="noopener" href="https://learn.microsoft.com/zh-cn/dotnet/csharp/programming-guide/types/boxing-and-unboxing">装箱和取消装箱（C# 编程指南） - Microsoft Learn</a></li>
